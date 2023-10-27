@@ -19,5 +19,9 @@ export const useAxios = (baseUrl) => {
         });
     };
 
-    return [response, addData];
+    const clearData = () => {
+        setResponse([]);
+    };
+
+    return [response, addData, clearData];
 };
