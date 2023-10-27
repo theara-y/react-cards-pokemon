@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import { v4 as uuid } from 'uuid';
 
 export const useFlip = () => {
     const [isFacingUp, setIsFacingUp] = useState(true);
@@ -10,13 +9,13 @@ export const useFlip = () => {
     return [isFacingUp, flipCard];
 };
 
-export const useAxios = (url) => {
+export const useAxios = (baseUrl) => {
     const [response, setResponse] = useState([]);
 
-    const addData = async () => {
-        const res = await axios.get(url);
+    const addData = async (format, endpoint = "") => {
+        const res = await axios.get(baseUrl + endpoint);
         setResponse(data => {
-            return [...data, {image: res.data.cards[0].image, id: uuid()}]
+            return [...data, format(res)]
         });
     };
 
