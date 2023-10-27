@@ -9,7 +9,10 @@ import { useAxios } from "./hooks";
  * Can also add a new card at random,
  * or from a dropdown of available pokemon. */
 function PokeDex() {
-  const [pokemon, addPokemon, clearPokemon] = useAxios("https://pokeapi.co/api/v2/pokemon/");
+  const [pokemon, addPokemon, clearPokemon] = useAxios(
+    "pokemons",
+    "https://pokeapi.co/api/v2/pokemon/"
+  );
 
   const format = (res) => ({
     id: uuid(),
